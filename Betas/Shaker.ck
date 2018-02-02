@@ -1,4 +1,30 @@
 /*
+  --- MIT License --------------------------------------------------------------
+
+  Copyright (c) 2018 Lewe Ucho
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  ------------------------------------------------------------------------------
+
+  SHAKER
+
   Shaker is a simple sound buffer player with additional shake feature.
   When triggered the playhead jumps 1-6 times within [-1, +3] seconds
   window around the current playhead position. After that the playhead
@@ -6,7 +32,9 @@
   happened, i.e. trigger time position + total time of interuptions.
   This way the overall pulse of the file is not distructed. Every playhead
   jump is enveloped.
+
 */
+
 public class Shaker extends Chubgraph {
   SndBuf buf;
   Envelope env;
