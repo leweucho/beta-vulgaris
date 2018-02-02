@@ -24,9 +24,11 @@
   ------------------------------------------------------------------------------
 
   BEZIER2D
+
   A simple generator of 2D Bezier curves represented as an Array of Points.
 
   EXAMPLE USE
+
   Point a, b, c, d;
     0 => a.x;   0 => a.y;
    50 => b.x; 100 => b.y;

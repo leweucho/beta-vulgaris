@@ -33,6 +33,19 @@
   This way the overall pulse of the file is not distructed. Every playhead
   jump is enveloped.
 
+  EXAMPLE USE
+
+  Shaker s => dac;
+
+  "Beethoven_Piano_Sonata_No1_III_Menuetto.wav" =>
+    s.read;
+
+  2::second => now;
+
+  for (0 => int i; i < 5; i++) {
+    s.shake();
+    2::second => now;
+  }
 */
 
 public class Shaker extends Chubgraph {
