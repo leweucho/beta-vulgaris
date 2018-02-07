@@ -37,6 +37,11 @@ public class Point {
     0.0 => _y;
   }
 
+  fun void set(float newX, float newY) {
+    newX => _x;
+    newY => _y;
+  }
+
   fun float x() {
     return _x;
   }
