@@ -71,7 +71,7 @@ public class Bezier2D {
       => dt;
 
     for (0 => int i; i <= resolution; ++i) {
-      singlePoint(points, i * dt).x()
+      singlePoint(points, i * dt).y()
          => curve[i];
     }
 
