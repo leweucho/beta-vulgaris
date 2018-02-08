@@ -35,16 +35,49 @@
   150 => c.x; 100 => c.y;
   200 => d.x;   0 => d.y;
 
-  [a, b, c, d] @=> Point points[];
-  Bezier2D.theCurve(points, 10) @=> Point result[];
+  [a, b, c, d]
+    @=> Point points[];
+
+  Bezier2D.theCurve(points, 10)
+    @=> float result[];
 
   for (0 => int i; i < result.cap(); i++) {
-    <<< result[i].x(), result[i].y() >>>;
+    <<< result[i] >>>;
   }
 
 */
 
 public class Bezier2D {
+  fun static float[] theCurve(int numOfPoints, int resolution) {
+    Point points[numOfPoints];
+
+    for (0 => int i; i < points.cap(); ++i) {
+      Point _ @=> points[i];
+      _.set(
+        Math.random2f(0, 1000),
+        Math.random2f(0, 1000)
+      );
+    }
+
+    return theCurve(points, resolution);
+  }
+
+  fun static float[] theCurve(Point points[], int resolution) {
+    // resolution + 1 so the curve end at the last constrol point
+    float curve[resolution + 1];
+    float dt;
+
+    1.0 / resolution
+      => dt;
+
+    for (0 => int i; i <= resolution; ++i) {
+      singlePoint(points, i * dt).x()
+         => curve[i];
+    }
+
+    return curve;
+  }
+
   fun static float newton(int n, int k) {
     float a;
     float b;
@@ -85,20 +118,5 @@ public class Bezier2D {
     return p;
   }
 
-  fun static Point[] theCurve(Point points[], int resolution) {
-    // resolution + 1 so the curve end at the last constrol point
-    Point curve[resolution + 1];
-    float dt;
-
-    1.0 / resolution
-      => dt;
-
-    for (0 => int i; i <= resolution; ++i) {
-      singlePoint(points, i * dt)
-         @=> curve[i];
-    }
-
-    return curve;
-  }
 }
 

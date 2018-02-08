@@ -66,13 +66,13 @@ if (me.arg(0) == "bezier") {
     @=> Point points[];
 
   Bezier2D.theCurve(points, 100)
-    @=> Point result[];
+    @=> float result[];
 
   SinOsc s => Gain g => dac;
   0.5 => g.gain;
 
   for (0 => int i; i < result.cap(); ++i) {
-    result[i].y() + 300 => s.freq;
+    result[i] + 300 => s.freq;
 
     100::ms => now;
   }
