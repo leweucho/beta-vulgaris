@@ -23,57 +23,24 @@
 
   ------------------------------------------------------------------------------
 
-  PLAYGROUND
+  SHAKER PLAYGROUND
 
-  A sandbox for easy prototyping. Use it via flags passed as command-line
-  arguments:
+  A sandbox for easy prototyping with Shaker class.
 
-   * shaker:<path_to_some_wav_file>
-   * bezier
-
-  with a collection of dependencies, i.e.:
-
-  $ chuck Curves/Point Curves/Bezier2D Utils Betas/Shaker \
-    playground.ck:shaker:<path_to_some_wav_file>
-
-  $ chuck Curves/Point Curves/Bezier2D Utils Betas/Shaker \
-    playground.ck:bezier
+  $ node runner.js playground/shaker <path_to_wav_file>
 
 */
 
-if (me.arg(0) == "shaker") {
-  Shaker s => dac;
+Shaker s => dac;
 
-  me.dir() + me.arg(1) =>
-    s.read;
+me.arg(0) =>
+  s.read;
 
+2::second => now;
+
+for (0 => int i; i < 5; i++) {
+  s.shake();
   2::second => now;
-
-  for (0 => int i; i < 5; i++) {
-    s.shake();
-    2::second => now;
-  }
 }
 
-if (me.arg(0) == "bezier") {
-  Point a, b, c, d;
-    0 => a.x; 500 => a.y;
-    0 => b.x;   0 => b.y;
-  150 => c.x;  50 => c.y;
-  200 => d.x;   0 => d.y;
 
-  [a, b, c, d]
-    @=> Point points[];
-
-  Bezier2D.theCurve(points, 100)
-    @=> float result[];
-
-  SinOsc s => Gain g => dac;
-  0.5 => g.gain;
-
-  for (0 => int i; i < result.cap(); ++i) {
-    result[i] + 300 => s.freq;
-
-    100::ms => now;
-  }
-}
