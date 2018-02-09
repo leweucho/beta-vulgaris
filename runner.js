@@ -56,7 +56,8 @@ const paths = {
 
 const [ _, __, file, ...ops ] = process.argv
 fs.readFile(
-  file, 'utf-8',
+  file.endsWith('.ck') ? file : `${file}.ck`,
+  'utf-8',
   (err, fileContent) => {
     const deps = buildCmdDeps(fileContent, depTree, paths)
     const params = deps.concat(`${file}:${ops.join(':')}`)
