@@ -60,7 +60,10 @@ fs.readFile(
   'utf-8',
   (err, fileContent) => {
     const deps = buildCmdDeps(fileContent, depTree, paths)
-    const params = deps.concat(`${file}:${ops.join(':')}`)
+    const params = [
+      `--dac:${process.env.CHUCK_DAC_N}`,
+      ...deps.concat(`${file}:${ops.join(':')}`)
+    ]
 
     const child = spawn('chuck', params)
     child.stdout.pipe(process.stdout);
