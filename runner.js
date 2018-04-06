@@ -43,7 +43,8 @@ const depTree = {
   Bezier2D: [ 'Point' ],
   Point: [],
   Shaker: [ 'Utils' ],
-  Utils: []
+  Utils: [],
+  OSCUtils: []
 }
 
 // automate paths extraction from the file system
@@ -51,7 +52,8 @@ const paths = {
   Bezier2D: 'Curves/Bezier2D',
   Point: 'Curves/Point',
   Shaker: 'Betas/Shaker',
-  Utils: 'Utils'
+  Utils: 'Utils',
+  OSCUtils: 'OSC/OSCUtils',
 }
 
 const [ _, __, file, ...ops ] = process.argv
